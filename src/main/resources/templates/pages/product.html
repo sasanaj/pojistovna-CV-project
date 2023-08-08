@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="p-3">
+    <a th:href="@{/products/newProduct}" type="button" class="btn btn-primary rounded-4">Nový produkt</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">nazev</th>
+            <th scope="col">popis</th>
+            <th scope="col">cena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <th th:text="${product.id}" scope="row">1</th>
+            <td th:text="${product.name}" class="fw-semibold">Mark</td>
+            <td th:text="${product.description}">Otto</td>
+            <td th:text="${product.price}">@mdo</td>
+            <td ><a class="btn btn-primary rounded-4" th:href="@{'products/editProduct/' + ${product.id}}" type="button">upravit</a></td>
+            <td ><a class="btn btn-primary rounded-4" th:href="@{'products/deleteProduct/' + ${product.id}}" type="button">odstranit</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+</body>
+</html>

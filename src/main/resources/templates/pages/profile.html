@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+
+
+    <div layout:fragment="content">
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="zivot" th:href="@{'/insurance/zivotko/'+${client.clientId}}">životní pojištění</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="cestovni" href="#">cestovní</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" id="majetek">majetek</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" id="sluzby">sluzby</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="container p-5">
+
+            <form class="col-6" >
+                    <legend>Client info:</legend>
+                    <div class="mb-3">
+                        <label for="jmeno" class="form-label">Jmeno</label>
+                        <input th:value="${client.jmeno}"  type="text" id="jmeno" class="form-control" placeholder="Jiri">
+                    </div>
+                    <div class="mb-3">
+                        <label for="prijmeni" class="form-label">Prijmeni</label>
+                        <input th:value="${client.prijmeni}"type="text" id="prijmeni" class="form-control" placeholder="Sana">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefon" class="form-label">Telefon</label>
+                        <input th:value="${client.telefon}" type="text" id="telefon" class="form-control" placeholder="telefon">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input th:value="${client.email}" type="text" id="email" class="form-control" placeholder="borec.stoleti@gmail.com">
+                    </div>
+
+            </form>
+        </div>
+
+
+</div>
+</body>
+</html>

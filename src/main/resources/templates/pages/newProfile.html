@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="container p-5">
+
+    <form class="col-6" th:object="${ClientDTO}" th:action="@{/home}" method="post">
+        <fieldset disabled>
+            <legend>Nový klient</legend>
+            <div class="mb-3">
+                <label for="jmeno" class="form-label">Jmeno</label>
+                <input th:field="*{jmeno}" type="text" id="jmeno" class="form-control" placeholder="Jiri">
+                <span class="text-danger" th:errors="*{jmeno}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="prijmeni" class="form-label">Prijmeni</label>
+                <input th:field="*{prijmeni}" type="text" id="prijmeni" class="form-control" placeholder="Sana">
+                <span class="text-danger" th:errors="*{prijmeni}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="telefon" class="form-label">Telefon</label>
+                <input th:field="*{telefon}" type="text" id="telefon" class="form-control" placeholder="731761420">
+                <span class="text-danger" th:errors="*{telefon}"></span>
+
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input th:field="*{email}" type="text" id="email" class="form-control" placeholder="borec.stoleti@gmail.com">
+                <span class="text-danger" th:errors="*{email}"></span>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Novy</button>
+            <button type="submit" class="btn btn-primary">Hledat</button>
+
+        </fieldset>
+    </form>
+</div>
+
+</div>
+</body>
+</html>

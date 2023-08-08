@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>Zivotni</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form></form>
+    <h2 class="display-4" >Životní pojištění pro <span th:text="${client.prijmeni}"></span></h2>
+    <p>Nazev pojisteni: <span th:text="${product.name}"></span></p>
+
+    <p>Cena pojisteni: <span th:text="${product.price}"></span></p>
+</div>
+
+</body>
+</html>

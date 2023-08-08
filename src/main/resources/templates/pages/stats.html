@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>stats</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+<h1 class="display-3">Klienti</h1>
+<div>
+    <a th:href="@{/home}" class="btn rounded-3 btn-primary">Novy klient</a>
+</div>
+<div>
+    <ul class="list-group" >
+        <li th:each="client: ${clients}" class="list-group-item">
+            <a th:href="@{'/profile/' + ${client.clientId}}" class="text-decoration-none" th:text="${client.prijmeni}"></a><span class="mr-2"> </span> <a th:href="@{'/profile/' + ${client.clientId}}" class="text-decoration-none" th:text=" ${client.jmeno}"></a>
+            <span th:text="${client.email}"></span>
+
+                <a class="btn btn-primary rounded-4" th:href="@{'/edit/' + ${client.clientId}}">Editovat</a>
+                <a class="btn btn-primary rounded-4" th:href="@{'/delete/' + ${client.clientId}}">Odstranit</a>
+
+        </li>
+    </ul>
+</div>
+</div>
+</body>
+</html>

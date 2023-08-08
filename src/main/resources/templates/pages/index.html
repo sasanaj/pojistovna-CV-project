@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="container p-3">
+<div class="row">
+    <form class="col-6 py-2 bg-light" th:object="${clientDTO}" th:action="@{/home}" method="post">
+            <legend>Nový klient:</legend>
+            <div class="mb-3">
+                <label for="jmeno" class="form-label">Jméno</label>
+                <input th:field="*{jmeno}" type="text" id="jmeno" class="form-control" placeholder="Jiri">
+                <span class="text-danger" th:errors="*{jmeno}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="prijmeni" class="form-label">Příjmení</label>
+                <input th:field="*{prijmeni}" type="text" id="prijmeni" class="form-control" placeholder="Sana">
+                <span class="text-danger" th:errors="*{prijmeni}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="telefon" class="form-label">Telefon</label>
+                <input th:field="*{telefon}" type="text" id="telefon" class="form-control" placeholder="731761420">
+                <span class="text-danger" th:errors="*{telefon}"></span>
+
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input th:field="*{email}" type="text" id="email" class="form-control" placeholder="borec.stoleti@gmail.com">
+                <span class="text-danger" th:errors="*{email}"></span>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Nový</button>
+    </form>
+
+        <form class="col-6 py-2" th:object="${clientDTO}"th:action="@{/search}"  method="post">
+            <legend>Hledání:</legend>
+            <div class="mb-3">
+                <label for="jmeno2" class="form-label">Jméno</label>
+                <input th:field="*{jmeno}" type="text" id="jmeno2" class="form-control" placeholder="Jiri">
+            </div>
+            <div class="mb-3">
+                <label for="prijmeni2" class="form-label">Příjmení</label>
+                <input th:field="*{prijmeni}" type="text" id="prijmeni2" class="form-control" placeholder="Sana">
+            </div>
+            <div class="mb-3">
+                <label for="telefon2" class="form-label">Telefon</label>
+                <input th:field="*{telefon}" type="text" id="telefon2" class="form-control" placeholder="731761420">
+
+            </div>
+            <div class="mb-3">
+                <label for="email2" class="form-label">Email</label>
+                <input th:field="*{email}" type="text" id="email2" class="form-control" placeholder="borec.stoleti@gmail.com">
+
+            </div>
+            <button type="submit" class="btn btn-primary">Hledat</button>
+        </form>
+</div>
+</div>
+
+</div>
+</body>
+</html>

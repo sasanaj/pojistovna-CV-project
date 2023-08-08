@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>newProduct</title>
+</head>
+<body>
+<div>
+    <div layout:fragment="content">
+        <div class="container p-5">
+
+            <form class="col-6" th:object="${productDTO}" th:action="@{'/products/editProduct/'+${productId}}" method="post">
+                <div>
+                    <h2 class="display-3">Nový produkt</h2>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">nazev</label>
+                    <input th:field="*{name}"  type="text" id="name" class="form-control" placeholder="nazev produktu">
+                    <span class="text-danger" th:errors="*{name}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Popis</label>
+                    <input th:field="*{description}" type="text" id="description" class="form-control" placeholder="popis produktu">
+                    <span class="text-danger" th:errors="*{description}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Cena (CZK)</label>
+                    <input th:field="*{price}" type="number" id="price" class="form-control" placeholder="cena produktu">
+                    <span class="text-danger" th:errors="*{price}"></span>
+
+                </div>
+                Splatnost
+                <div class="mb-3 form-check">
+                    <input th:checked="*{daily}" value=true type="checkbox" class="form-check-input" id="daily" name="daily">
+                    <label class="form-check-label"  for="daily">Denně</label>
+                </div>
+                <div class="mb-3 form-check">
+                    <input th:checked="*{monthly}" value=true type="checkbox" class="form-check-input" id="monthly" name="monthly">
+                    <label class="form-check-label" for="monthly">Měsíčně</label>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Uložit</button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

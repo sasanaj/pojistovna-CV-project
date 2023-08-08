@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="p-3">
+    <a th:href="@{/home}" type="button" class="btn btn-primary rounded-4">Zpět</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">jmeno</th>
+            <th scope="col">prijmeni</th>
+            <th scope="col">telefon</th>
+            <th scope="col">email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}">
+            <th th:text="${client.jmeno}" scope="row">1</th>
+            <td th:text="${client.prijmeni}" class="fw-semibold">Mark</td>
+            <td th:text="${client.telefon}">Otto</td>
+            <td th:text="${client.email}">@mdo</td>
+            <td ><a class="btn btn-primary rounded-4" th:href="@{'/profile/' + ${client.clientId}}" >detail</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+</body>
+</html>
