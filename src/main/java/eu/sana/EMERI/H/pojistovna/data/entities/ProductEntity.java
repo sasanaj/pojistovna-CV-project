@@ -23,14 +23,8 @@ public class ProductEntity {
     public long getId() {
         return id;
     }
-   /* public String getFrequency() {
-        return frequency;
-    }
 
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
-    }
-*/
+
     public void setId(long id) {
         this.id = id;
     }

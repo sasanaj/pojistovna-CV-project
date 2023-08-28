@@ -23,9 +23,9 @@
             <td th:text="${product.name}" class="fw-semibold">Mark</td>
             <td th:text="${product.description}">Otto</td>
             <td th:text="${product.price}">@mdo</td>
-            <td ><a class="btn btn-primary rounded-4" th:href="@{'products/editProduct/' + ${product.id}}" type="button">upravit</a></td>
-            <td ><a class="btn btn-primary rounded-4" th:href="@{'products/deleteProduct/' + ${product.id}}" type="button">odstranit</a></td>
-
+            <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-primary rounded-4" th:href="@{'products/editProduct/' + ${product.id}}" type="button">upravit</a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-primary rounded-4" th:href="@{'products/deleteProduct/' + ${product.id}}" type="button">odstranit</a></td>
+            </p>
         </tr>
         </tbody>
     </table>

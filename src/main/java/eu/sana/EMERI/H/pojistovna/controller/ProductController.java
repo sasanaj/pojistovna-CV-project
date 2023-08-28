@@ -8,6 +8,7 @@ import eu.sana.EMERI.H.pojistovna.services.ProductService;
 import eu.sana.EMERI.H.pojistovna.services.ProductServiceInterface;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,19 +30,22 @@ public class ProductController {
     ProductServiceInterface productServiceInterface;
 
     @GetMapping()
-    public String renderProducts(Model model){
+    public String renderProducts(Model model) {
         List<ProductDTO> products = productServiceInterface.getAll();
-model.addAttribute("products", products);
+        model.addAttribute("products", products);
         return "pages/product";
     }
+
     @GetMapping("/newProduct")
-    public String renderNewProduct(ProductDTO productDTO){
+    public String renderNewProduct(ProductDTO productDTO) {
 
         return "pages/newProduct";
     }
+
+    @Secured("ROLE_ADMIN")
     @PostMapping("/newProduct")
-    public String createProduct(@Valid ProductDTO productDTO, BindingResult result, RedirectAttributes redirectAttributes){
-        if(result.hasErrors()){
+    public String createProduct(@Valid ProductDTO productDTO, BindingResult result, RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("error", "chybně vyplněný formulař");
             return renderNewProduct(productDTO);
         }
@@ -51,30 +55,34 @@ model.addAttribute("products", products);
         return "redirect:/products";
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/deleteProduct/{productId}")
-public String deleteProduct(ProductDTO productDTO, @PathVariable long productId, RedirectAttributes redirectAttributes){
-    productServiceInterface.deleteProduct(productId);
-    redirectAttributes.addFlashAttribute("success","produkt byl odstranen z nabidky");
-    return "redirect:/products";
+    public String deleteProduct(ProductDTO productDTO, @PathVariable long productId, RedirectAttributes redirectAttributes) {
+        productServiceInterface.deleteProduct(productId);
+        redirectAttributes.addFlashAttribute("success", "produkt byl odstranen z nabidky");
+        return "redirect:/products";
 
-}
-@GetMapping("/editProduct/{productId}")
-    public String editProduct(@PathVariable long productId, ProductDTO productDTO){
-         ProductDTO product = productServiceInterface.getById(productId);
-         productMapperInterface.updateProductDTO(product,productDTO);
+    }
+
+    @GetMapping("/editProduct/{productId}")
+    public String editProduct(@PathVariable long productId, ProductDTO productDTO) {
+        ProductDTO product = productServiceInterface.getById(productId);
+        productMapperInterface.updateProductDTO(product, productDTO);
         return "pages/editProduct";
-}
-@PostMapping("/editProduct/{productId}")
-    public String updateProduct(@PathVariable long productId, @Valid  ProductDTO productDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes ){
-if(bindingResult.hasErrors()){
-    redirectAttributes.addFlashAttribute("error","chyba formulaře");
+    }
 
-    return editProduct(productId, productDTO);
-}
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/editProduct/{productId}")
+    public String updateProduct(@PathVariable long productId, @Valid ProductDTO productDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("error", "chyba formulaře");
+
+            return editProduct(productId, productDTO);
+        }
 
         productDTO.setId(productId);
-productServiceInterface.updateProduct(productDTO);
-redirectAttributes.addFlashAttribute("success","produkt byl uspěšně aktualizován");
-return "redirect:/products";
-}
+        productServiceInterface.updateProduct(productDTO);
+        redirectAttributes.addFlashAttribute("success", "produkt byl uspěšně aktualizován");
+        return "redirect:/products";
+    }
 }

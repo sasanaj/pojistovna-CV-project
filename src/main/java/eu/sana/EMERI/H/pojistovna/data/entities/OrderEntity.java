@@ -6,7 +6,7 @@ import jdk.jfr.Enabled;
 @Entity
 @Table(name = "orders")
 public class OrderEntity {
-    @Id()
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderId;
     @Column(nullable = false)

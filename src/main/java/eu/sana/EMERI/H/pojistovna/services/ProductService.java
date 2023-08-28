@@ -1,12 +1,9 @@
 package eu.sana.EMERI.H.pojistovna.services;
 
-import eu.sana.EMERI.H.pojistovna.data.entities.ClientEntity;
 import eu.sana.EMERI.H.pojistovna.data.entities.ProductEntity;
 import eu.sana.EMERI.H.pojistovna.data.repositories.ProductRepositoryInterface;
 import eu.sana.EMERI.H.pojistovna.mappers.ProductMapperInterface;
-import eu.sana.EMERI.H.pojistovna.models.ClientDTO;
 import eu.sana.EMERI.H.pojistovna.models.ProductDTO;
-import eu.sana.EMERI.H.pojistovna.models.exeptions.ClientNotFoundExeption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class=" align-items-center text-bg-primary rounded-3 border-0" th:text="${success}" th:if="${success}"></div>
+    <div class=" align-items-center text-bg-primary rounded-3 border-0" th:if="${param.error}">Neplatný email nebo heslo.</div>
+
+    <h1 class="display-4">Přihlášení</h1>
+    <form th:action="@{/account/login}" method="post" class="m-3 ol-md-4">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email"  class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">Heslo</label>
+            <input id="password" type="password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="my-3 btn btn-primary rounded-3">Přihlásit</button>
+        </div>
+        <div class="form-group">
+            <a th:href="@{/account/register}" class="my-3 btn btn-primary rounded-3">Registrace</a>
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>

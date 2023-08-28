@@ -2,10 +2,11 @@ package eu.sana.EMERI.H.pojistovna.controller;
 
 import eu.sana.EMERI.H.pojistovna.mappers.ClientMapperInterface;
 import eu.sana.EMERI.H.pojistovna.models.ClientDTO;
-import eu.sana.EMERI.H.pojistovna.models.exeptions.ClientNotFoundExeption;
+import eu.sana.EMERI.H.pojistovna.models.exeptions.ClientNotFoundException;
 import eu.sana.EMERI.H.pojistovna.services.ClientServiceInterface;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,8 +72,7 @@ return printHome(clientDTO, redirectAttributes);
         model.addAttribute("client", clientDTO);
         return "pages/profile";
     }*/
-
-
+    @Secured("ROLE_ADMIN")
 @GetMapping("/profile/{clientId}")
 public String showDetail(@PathVariable long clientId, Model model, RedirectAttributes redirectAttributes){
 ClientDTO clientDTO = clientServiceInterface.getById(clientId);
@@ -81,6 +81,7 @@ model.addAttribute("client", clientDTO);
 }
 
 
+    @Secured("ROLE_ADMIN")
 
     @GetMapping("/stats")
     public String renderStats(Model model, RedirectAttributes redirectAttributes){
@@ -115,7 +116,7 @@ model.addAttribute("client", clientDTO);
         return "redirect:/stats";
     }
 
-    @ExceptionHandler({ClientNotFoundExeption.class})
+    @ExceptionHandler({ClientNotFoundException.class})
     public String handleAlertNotFound(RedirectAttributes redirectAttributes){
     redirectAttributes.addFlashAttribute("error", "Klient nenalezen");
         return "pages/stats";

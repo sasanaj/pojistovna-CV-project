@@ -4,7 +4,7 @@ import eu.sana.EMERI.H.pojistovna.data.entities.ClientEntity;
 import eu.sana.EMERI.H.pojistovna.data.repositories.ClientRepositoryInterface;
 import eu.sana.EMERI.H.pojistovna.mappers.ClientMapperInterface;
 import eu.sana.EMERI.H.pojistovna.models.ClientDTO;
-import eu.sana.EMERI.H.pojistovna.models.exeptions.ClientNotFoundExeption;
+import eu.sana.EMERI.H.pojistovna.models.exeptions.ClientNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class ClientService implements ClientServiceInterface {
 
         return clientRepositoryInterface
                 .findById(clientId)
-                .orElseThrow(ClientNotFoundExeption::new);
+                .orElseThrow(ClientNotFoundException::new);
     }
 
     @Override

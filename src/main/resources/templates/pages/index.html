@@ -13,23 +13,23 @@
             <legend>Nový klient:</legend>
             <div class="mb-3">
                 <label for="jmeno" class="form-label">Jméno</label>
-                <input th:field="*{jmeno}" type="text" id="jmeno" class="form-control" placeholder="Jiri">
+                <input th:field="*{jmeno}" type="text" id="jmeno" class="form-control" placeholder="křestní jmeno">
                 <span class="text-danger" th:errors="*{jmeno}"></span>
             </div>
             <div class="mb-3">
                 <label for="prijmeni" class="form-label">Příjmení</label>
-                <input th:field="*{prijmeni}" type="text" id="prijmeni" class="form-control" placeholder="Sana">
+                <input th:field="*{prijmeni}" type="text" id="prijmeni" class="form-control" placeholder="příjmení">
                 <span class="text-danger" th:errors="*{prijmeni}"></span>
             </div>
             <div class="mb-3">
                 <label for="telefon" class="form-label">Telefon</label>
-                <input th:field="*{telefon}" type="text" id="telefon" class="form-control" placeholder="731761420">
+                <input th:field="*{telefon}" type="text" id="telefon" class="form-control" placeholder="777777777">
                 <span class="text-danger" th:errors="*{telefon}"></span>
 
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input th:field="*{email}" type="text" id="email" class="form-control" placeholder="borec.stoleti@gmail.com">
+                <input th:field="*{email}" type="text" id="email" class="form-control" placeholder="email.uzivatele@email.cz">
                 <span class="text-danger" th:errors="*{email}"></span>
 
             </div>
@@ -40,20 +40,20 @@
             <legend>Hledání:</legend>
             <div class="mb-3">
                 <label for="jmeno2" class="form-label">Jméno</label>
-                <input th:field="*{jmeno}" type="text" id="jmeno2" class="form-control" placeholder="Jiri">
+                <input th:field="*{jmeno}" type="text" id="jmeno2" class="form-control" placeholder="křestní jmeno">
             </div>
             <div class="mb-3">
                 <label for="prijmeni2" class="form-label">Příjmení</label>
-                <input th:field="*{prijmeni}" type="text" id="prijmeni2" class="form-control" placeholder="Sana">
+                <input th:field="*{prijmeni}" type="text" id="prijmeni2" class="form-control" placeholder="příjmení">
             </div>
             <div class="mb-3">
                 <label for="telefon2" class="form-label">Telefon</label>
-                <input th:field="*{telefon}" type="text" id="telefon2" class="form-control" placeholder="731761420">
+                <input th:field="*{telefon}" type="text" id="telefon2" class="form-control" placeholder="777777777">
 
             </div>
             <div class="mb-3">
                 <label for="email2" class="form-label">Email</label>
-                <input th:field="*{email}" type="text" id="email2" class="form-control" placeholder="borec.stoleti@gmail.com">
+                <input th:field="*{email}" type="text" id="email2" class="form-control" placeholder="email.uzivatele@email.cz">
 
             </div>
             <button type="submit" class="btn btn-primary">Hledat</button>
