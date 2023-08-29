@@ -56,7 +56,27 @@
                     </div>
 
             </form>
+
         </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">nazev</th>
+                <th scope="col">popis</th>
+                <th scope="col">cena</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <th th:text="${order.id}" scope="row">1</th>
+                <td th:text="${order.name}" class="fw-semibold">Mark</td>
+                <td th:text="${order.description}">Otto</td>
+                <td th:text="${order.price}">@mdo</td>
+                <td><a class="btn btn-primary rounded-4" th:href="@{'order/detail/' + ${order.id}}" type="button">detail</a></td>
+            </tr>
+            </tbody>
+        </table>
 
 
 </div>

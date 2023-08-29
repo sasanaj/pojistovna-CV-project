@@ -51,4 +51,10 @@ public class AccountController {
         redirectAttributes.addFlashAttribute("success", "Uživatel zaregistrován.");
         return "redirect:/account/login";
     }
+    @GetMapping("/logout")
+    public String logout(){
+           return "redirect:/account/login";
+
+    }
+
 }

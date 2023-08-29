@@ -26,10 +26,8 @@
             <div>
                 <a class=" btn btn-outline-success" sec:authorize="isAnonymous()" th:href="@{/account/login}">Log in</a>
                 <a sec:authorize="isAnonymous()" class=" btn btn-outline-success" th:href="@{/account/register}">Sign up</a>
+                <a class=" btn btn-outline-success" th:href="@{/account/logout}" sec:authorize="isAuthenticated()">Log out</a>
 
-                <form method="post" th:action="@{/account/logout}">
-                    <a class=" btn btn-outline-success" sec:authorize="isAuthenticated()">Log out</a>
-                </form>
             </div>
         </div>
     </nav>
